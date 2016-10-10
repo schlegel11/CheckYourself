@@ -33,7 +33,7 @@ public class CalendarSheet {
 
     private void initialize() {
         addEmpty(Dates.getDayOfWeekFromFirstDayOfMonth(getDate()));
-        IntStream.rangeClosed(Dates.getDayOfWeekFromFirstDayOfMonth(getDate()), Dates.getLengthOfMonth(getDate()))
+        IntStream.rangeClosed(1, Dates.getLengthOfMonth(getDate()))
                 .forEach(i -> addDay(new CalendarDay(getYear(), getMonth(), i)));
     }
 

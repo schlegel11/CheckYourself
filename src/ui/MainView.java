@@ -72,7 +72,6 @@ public class MainView implements IMainView {
         // Haupt Layout fuer das gesamte Fenster
         JPanel borderPanel = new JPanel();
         borderPanel.setLayout(new BorderLayout(30, 20));
-
         // FlowPanel fuer die Ueberschrift
         flowPanel = new JPanel();
         flowPanel.setLayout(new FlowLayout());
@@ -114,10 +113,11 @@ public class MainView implements IMainView {
     }
 
     public void createDaysOfWeek(String name) {
-        JLabel tag = new JLabel(name);
-        tag.setOpaque(true);
-        tag.setBorder(BorderFactory.createMatteBorder(2, 1, 2, 2, Color.GRAY));
+        JButton tag = new JButton(name);
+        tag.setOpaque(false);
         tag.setBackground(Color.LIGHT_GRAY);
+        tag.setBorderPainted( false );
+        tag.setFocusPainted( false );
         tag.setHorizontalAlignment(JLabel.CENTER);
         gridPanel.add(tag);
     }
