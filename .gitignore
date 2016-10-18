@@ -30,3 +30,6 @@ target/
 
 # Shippable reports
 shippable
+
+# Config file
+*.sav
