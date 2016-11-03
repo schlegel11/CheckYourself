@@ -74,7 +74,7 @@ public class Presenter {
     }
 
     private void updateCalendarSheet(CalendarSheet calendarSheet) {
-        mainView.updateCalendarSheetDays(EntityWrapper.entitiesToNewEntityWrapperCollection(calendarSheet.getDays()));
+        mainView.updateCalendarSheetDays(EntityWrapper.newEntityWrapper(calendarSheet));
     }
 
     private void eventCreateTaskButtonClicked() {

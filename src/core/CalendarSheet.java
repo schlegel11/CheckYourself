@@ -9,6 +9,7 @@ import java.time.Month;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -17,7 +18,7 @@ import java.util.stream.IntStream;
  * The {@link CalendarSheet} contains logic for create a {@link CalendarSheet}
  * with {@link CalendarDay}s and {@link Task}s.
  */
-public class CalendarSheet {
+public class CalendarSheet implements Iterable<CalendarDay> {
 
     private final LocalDate date;
     private List<CalendarDay> days = new ArrayList<>();
@@ -38,11 +39,11 @@ public class CalendarSheet {
     }
 
     private boolean addDay(CalendarDay day) {
-        return getDays().add(day);
+        return days.add(day);
     }
 
     private void addEmpty(int emptyDays) {
-        IntStream.range(1, emptyDays).forEach(i -> getDays().add(new CalendarDay.EmptyDay()));
+        IntStream.range(1, emptyDays).forEach(i -> days.add(new CalendarDay.EmptyDay()));
     }
 
     public boolean replaceDay(CalendarDay day) {
@@ -59,11 +60,7 @@ public class CalendarSheet {
     }
 
     public Collection<CalendarDay> getDaysWithTask() {
-        return getDays().stream().filter(CalendarDay::hasTasks).collect(Collectors.toList());
-    }
-
-    public Collection<CalendarDay> getDays() {
-        return days;
+        return days.stream().filter(CalendarDay::hasTasks).collect(Collectors.toList());
     }
 
     public LocalDate getDate() {
@@ -76,5 +73,10 @@ public class CalendarSheet {
 
     public int getYear() {
         return date.getYear();
+    }
+
+    @Override
+    public Iterator<CalendarDay> iterator() {
+        return days.iterator();
     }
 }

@@ -1,6 +1,6 @@
 package ui;
 
-import core.entities.CalendarDay;
+import core.CalendarSheet;
 import core.entities.Task;
 import ui.dialogs.DialogValues;
 import ui.initialize.MenuTaskValues;
@@ -9,7 +9,6 @@ import ui.initialize.YearSliderValues;
 
 import java.time.Month;
 import java.time.Year;
-import java.util.Collection;
 import java.util.function.Consumer;
 
 /**
@@ -37,7 +36,7 @@ public interface IMainView {
 
     void createMenuTaskButton(EntityWrapper<Task> values);
 
-    void updateCalendarSheetDays(Collection<EntityWrapper<CalendarDay>> days);
+    void updateCalendarSheetDays(EntityWrapper<CalendarSheet> calendarSheet);
 
     void updateYearSlider(Year year);
 

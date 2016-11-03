@@ -1,5 +1,6 @@
 package ui;
 
+import core.CalendarSheet;
 import core.entities.CalendarDay;
 import core.entities.Task;
 import ui.components.DateLabel;
@@ -13,8 +14,6 @@ import ui.initialize.MonthButtonValues;
 import ui.initialize.YearSliderValues;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -297,7 +296,7 @@ public class MainView implements IMainView {
     }
 
     @Override
-    public void updateCalendarSheetDays(Collection<EntityWrapper<CalendarDay>> days) {
+    public void updateCalendarSheetDays(EntityWrapper<CalendarSheet> calendarSheet) {
         gridPanel.removeAll();
 
         createDaysOfWeek("Montag");
@@ -308,8 +307,7 @@ public class MainView implements IMainView {
         createDaysOfWeek("Samstag");
         createDaysOfWeek("Sonntag");
 
-        for (EntityWrapper<CalendarDay> entityWrapper : days) {
-            CalendarDay day = entityWrapper.getEntity();
+        for (CalendarDay day : calendarSheet.getEntity()) {
             DateLabel kalenderTag = UIComponentFactory.createDateOrTodayDateLabel(day.getDate(), day.toString(),
                     day.isToday());
             if (day.hasTasks()) {
